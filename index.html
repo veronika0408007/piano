@@ -7,34 +7,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="piano">
-        <!-- White keys -->
-        <div class="key white" data-note="C4">C</div>
-        <div class="key white" data-note="D4">D</div>
-        <div class="key white" data-note="E4">E</div>
-        <div class="key white" data-note="F4">F</div>
-        <div class="key white" data-note="G4">G</div>
-        <div class="key white" data-note="A4">A</div>
-        <div class="key white" data-note="B4">B</div>
-        <div class="key white" data-note="C5">C</div>
-        <div class="key white" data-note="D5">D</div>
-        <div class="key white" data-note="E5">E</div>
-        <div class="key white" data-note="F5">F</div>
-        <div class="key white" data-note="G5">G</div>
-        <div class="key white" data-note="A5">A</div>
-        <div class="key white" data-note="B5">B</div>
-
-        <!-- Black keys -->
-        <div class="key black" data-note="C#4">C#</div>
-        <div class="key black" data-note="D#4">D#</div>
-        <div class="key black" data-note="F#4">F#</div>
-        <div class="key black" data-note="G#4">G#</div>
-        <div class="key black" data-note="A#4">A#</div>
-        <div class="key black" data-note="C#5">C#</div>
-        <div class="key black" data-note="D#5">D#</div>
-        <div class="key black" data-note="F#5">F#</div>
-        <div class="key black" data-note="G#5">G#</div>
-        <div class="key black" data-note="A#5">A#</div>
+    <div class="piano-container">
+        <div class="piano">
+            <div class="keys">
+                <!-- White keys -->
+                <div class="key white" data-note="A0"></div>
+                <div class="key white" data-note="B0"></div>
+                ${Array.from({ length: 7 }, (_, i) => `
+                    <div class="key white" data-note="C${i+1}"></div>
+                    <div class="key white" data-note="D${i+1}"></div>
+                    <div class="key white" data-note="E${i+1}"></div>
+                    <div class="key white" data-note="F${i+1}"></div>
+                    <div class="key white" data-note="G${i+1}"></div>
+                    <div class="key white" data-note="A${i+1}"></div>
+                    <div class="key white" data-note="B${i+1}"></div>
+                `).join('')}
+                <div class="key white" data-note="C8"></div>
+                <!-- Black keys -->
+                <div class="key black" data-note="A#0"></div>
+                ${Array.from({ length: 7 }, (_, i) => `
+                    <div class="key black" data-note="C#${i+1}"></div>
+                    <div class="key black" data-note="D#${i+1}"></div>
+                    <div class="key black" data-note="F#${i+1}"></div>
+                    <div class="key black" data-note="G#${i+1}"></div>
+                    <div class="key black" data-note="A#${i+1}"></div>
+                `).join('')}
+            </div>
+        </div>
     </div>
     <button onclick="toggleNotes()">Show/Hide Notes</button>
 
