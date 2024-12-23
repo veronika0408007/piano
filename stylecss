@@ -1,0 +1,54 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #f0f0f0;
+}
+
+.piano {
+    display: flex;
+    position: relative;
+}
+
+.key {
+    border: 1px solid #000;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.white {
+    width: 40px;
+    background: white;
+    z-index: 1;
+}
+
+.black {
+    width: 30px;
+    background: black;
+    color: white;
+    height: 100px;
+    position: absolute;
+    margin-left: -15px;
+    z-index: 2;
+}
+
+.black[data-note="C#"] { left: 30px; }
+.black[data-note="D#"] { left: 70px; }
+.black[data-note="F#"] { left: 150px; }
+.black[data-note="G#"] { left: 190px; }
+.black[data-note="A#"] { left: 230px; }
+
+.key span {
+    display: none;
+}
+
+.show-notes .key span {
+    display: inline;
+}
