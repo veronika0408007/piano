@@ -1,55 +1,67 @@
 /* styles.css */
 body {
+    margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
     height: 100vh;
-    flex-direction: column;
     background-color: #f0f0f0;
+}
+
+.piano-container {
+    width: 100%;
 }
 
 .piano {
     display: flex;
+    justify-content: center;
+    align-items: flex-end;
     position: relative;
-    margin-top: 20px;
+}
+
+.keys {
+    display: flex;
+    position: relative;
 }
 
 .key {
     border: 1px solid #000;
-    height: 200px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
+    position: relative;
 }
 
-.white {
-    width: 50px;
+.key.white {
+    width: 40px;
     background: white;
     z-index: 1;
 }
 
-.black {
+.key.black {
     width: 30px;
     background: black;
     color: white;
-    height: 120px;
+    height: 100px;
     position: absolute;
     margin-left: -15px;
     z-index: 2;
 }
 
-.black[data-note="C#4"] { left: 35px; }
-.black[data-note="D#4"] { left: 85px; }
-.black[data-note="F#4"] { left: 185px; }
-.black[data-note="G#4"] { left: 235px; }
-.black[data-note="A#4"] { left: 285px; }
-.black[data-note="C#5"] { left: 385px; }
-.black[data-note="D#5"] { left: 435px; }
-.black[data-note="F#5"] { left: 535px; }
-.black[data-note="G#5"] { left: 585px; }
-.black[data-note="A#5"] { left: 635px; }
+.key.black[data-note$="0"] { left: 25px; }
+.key.black[data-note$="1"] { left: 65px; }
+/* Positioning black keys for each octave */
+${Array.from({ length: 7 }, (_, i) => `
+    .key.black[data-note="C#${i+1}"] { left: ${65 + i * 280}px; }
+    .key.black[data-note="D#${i+1}"] { left: ${105 + i * 280}px; }
+    .key.black[data-note="F#${i+1}"] { left: ${185 + i * 280}px; }
+    .key.black[data-note="G#${i+1}"] { left: ${225 + i * 280}px; }
+    .key.black[data-note="A#${i+1}"] { left: ${265 + i * 280}px; }
+`).join('')}
 
 .key span {
     display: none;
