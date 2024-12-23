@@ -11,11 +11,12 @@ body {
 .piano {
     display: flex;
     position: relative;
+    margin-top: 20px;
 }
 
 .key {
     border: 1px solid #000;
-    height: 150px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -24,7 +25,7 @@ body {
 }
 
 .white {
-    width: 40px;
+    width: 50px;
     background: white;
     z-index: 1;
 }
@@ -33,22 +34,27 @@ body {
     width: 30px;
     background: black;
     color: white;
-    height: 100px;
+    height: 120px;
     position: absolute;
     margin-left: -15px;
     z-index: 2;
 }
 
-.black[data-note="C#"] { left: 30px; }
-.black[data-note="D#"] { left: 70px; }
-.black[data-note="F#"] { left: 150px; }
-.black[data-note="G#"] { left: 190px; }
-.black[data-note="A#"] { left: 230px; }
+.black[data-note="C#4"] { left: 35px; }
+.black[data-note="D#4"] { left: 85px; }
+.black[data-note="F#4"] { left: 185px; }
+.black[data-note="G#4"] { left: 235px; }
+.black[data-note="A#4"] { left: 285px; }
+.black[data-note="C#5"] { left: 385px; }
+.black[data-note="D#5"] { left: 435px; }
+.black[data-note="F#5"] { left: 535px; }
+.black[data-note="G#5"] { left: 585px; }
+.black[data-note="A#5"] { left: 635px; }
 
 .key span {
     display: none;
 }
 
-.show-notes .key span {
+.piano.show-notes .key span {
     display: inline;
 }
