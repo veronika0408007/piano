@@ -1,127 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Винтажное пианино</title>
-    <style>
-        body {
-            background-image: url('luxury_wallpaper.jpg'); /* Фон с роскошными обоями */
-            background-size: cover;
-            background-color: #000; /* Fallback color */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Times New Roman', Times, serif;
-        }
-        .piano-container {
-            position: relative;
-            width: 600px;
-            height: 400px;
-            background-color: #000;
-            border: 5px solid #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-        .piano-keys {
-            display: flex;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-        .key {
-            flex: 1;
-            height: 150px;
-            border: 1px solid #000;
-            background-color: #fff;
-            position: relative;
-        }
-        .key.black {
-            background-color: #000;
-            height: 100px;
-            width: 60%;
-            position: absolute;
-            top: 0;
-            left: 70%;
-            z-index: 1;
-        }
-        .key span {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-            color: #000;
-        }
-        .key.black span {
-            color: #fff;
-        }
-        .candle {
-            position: absolute;
-            width: 30px;
-            height: 100px;
-            background-color: #fff;
-            top: -110px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        .flame {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 20px;
-            background-color: #ff0;
-            border-radius: 50% 50% 0 0;
-            box-shadow: 0 0 10px rgba(255, 255, 0, 0.7);
-        }
-        .toggle-button {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            font-size: 14px;
-            background-color: #fff;
-            border: 2px solid #000;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Piano</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="piano-container">
-        <button class="toggle-button" onclick="toggleNotes()">Скрыть/Показать ноты</button>
-        <div class="candle">
-            <div class="flame"></div>
-        </div>
-        <div class="piano-keys">
-            <div class="key"><span>До</span></div>
-            <div class="key black"><span>До#</span></div>
-            <div class="key"><span>Ре</span></div>
-            <div class="key black"><span>Ре#</span></div>
-            <div class="key"><span>Ми</span></div>
-            <div class="key"><span>Фа</span></div>
-            <div class="key black"><span>Фа#</span></div>
-            <div class="key"><span>Соль</span></div>
-            <div class="key black"><span>Соль#</span></div>
-            <div class="key"><span>Ля</span></div>
-            <div class="key black"><span>Ля#</span></div>
-            <div class="key"><span>Си</span></div>
-        </div>
-    </div>
-
-    <script>
-        const notes = document.querySelectorAll('.key span');
+    <div class="piano">
+        <!-- White keys -->
+        <div class="key white" data-note="C" id="C">C</div>
+        <div class="key white" data-note="D" id="D">D</div>
+        <div class="key white" data-note="E" id="E">E</div>
+        <div class="key white" data-note="F" id="F">F</div>
+        <div class="key white" data-note="G" id="G">G</div>
+        <div class="key white" data-note="A" id="A">A</div>
+        <div class="key white" data-note="B" id="B">B</div>
         
-        function toggleNotes() {
-            notes.forEach(note => {
-                note.style.display = note.style.display === 'none' ? 'block' : 'none';
-            });
-        }
-    </script>
+        <!-- Black keys -->
+        <div class="key black" data-note="C#" id="C#">C#</div>
+        <div class="key black" data-note="D#" id="D#">D#</div>
+        <div class="key black" data-note="F#" id="F#">F#</div>
+        <div class="key black" data-note="G#" id="G#">G#</div>
+        <div class="key black" data-note="A#" id="A#">A#</div>
+    </div>
+    <button onclick="toggleNotes()">Show/Hide Notes</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
