@@ -1,3 +1,4 @@
+// script.js
 function toggleNotes() {
     document.querySelector('.piano').classList.toggle('show-notes');
 }
