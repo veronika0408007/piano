@@ -1,72 +1,613 @@
-/* styles.css */
+/*Sofjas daļa*/
+
 body {
     margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    overflow: hidden;
+  }
+   
+  /* Piano Section */
+  .piano {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 20px;
+    background-color: #222;
+    position: relative; 
+    
+  }
+  
+  .key {
+    position: relative;
+    height: 200px;
+    border: 1px solid #000;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+  }
+  
+  .white {
+    width: 60px;
+    background: white;
+    border: 1px solid #ccc;
+    margin: 0 -21px;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .black {
+    justify-content: center;
+    width: 40px;
+    height: 130px;
+    background: black;
+    position: relative;
+    z-index: 3;
+  }
+ .empty {
+    justify-content: center;
+    width: 40px;
+    height: 130px;
+    visibility: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  .key:active {
+    background: #f3f3f3;
+  }
+  
+  .black:active {
+    background: #333;
+  }
+
+  #toggleButton {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1001;
+}
+.bar {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+}
+#homeButton {
+    position: fixed;
+    top: 10px;
+    left: 50px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
 }
 
-.piano-container {
+#languageToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.track {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+}
+.track img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.info {
+    text-align: left;
+}
+
+
+/*Veronikas/Megijas daļa*/
+
+
+#toggleButton {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1001;
+}
+.bar {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+}
+#homeButton {
+    position: fixed;
+    top: 10px;
+    left: 50px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+#menu {
+    position: fixed;
+    top: 50px;
+    left: -25%;
+    width: 25%;
+    height: calc(100% - 50px);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-right: 2px solid white;
+    box-shadow: 2px 0 5px rgba(255,255,255,0.3);
+    overflow-y: auto;
+    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    padding: 20px;
+    opacity: 0;
+}
+.menu-option {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    color: white;
+}
+#languageToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+#musicLibrary {
+    display: none;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.track {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+}
+.track img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.info {
+    text-align: left;
+}
+
+
+
+/*Marijas daļa*/
+
+.one-4 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    z-index: 101;
+}
+
+
+#theCoolAwesomeDiv {
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    left: 10vw;
+    top: 10svh;
+    /*sizee*/
+    width: 80vw;
+    height: 50vh;
+    flex-wrap: wrap
+}
+
+#theUnlovedAwfullDiv {
+    /*temporary parent*/
+    position: absolute;
+    bottom: 10px;
+}
+
+#notechoice-base-itnocg {
+    position: fixed;
+    top:0;
+    background: #89b34e;
+    height: 60px;
     width: 100%;
 }
 
-.piano {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+p {
+    /* temporary styling */
+    color: navy;
+    width: 50%;
+    text-wrap: wrap;
+}
+
+.line-container {
+    width: 98%;
     position: relative;
-}
-
-.keys {
+    align-self: center;
+    box-sizing: border-box;
+    height: 17.6vh;
     display: flex;
-    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Evenly space the lines */
+    padding: 0.5vh 0 1.5vh;
+    margin-bottom: 1.1vh;
 }
 
-.key {
-    border: 1px solid #000;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-size: 12px;
-    cursor: pointer;
-    position: relative;
-}
-
-.key.white {
-    width: 40px;
-    background: white;
-    z-index: 1;
-}
-
-.key.black {
-    width: 30px;
+.line {
+    height: 0.2vh;
+    /* Height of each line */
     background: black;
-    color: white;
-    height: 100px;
+    /* Color of the lines */
+    margin: 0;
+    /* Remove any default margin */
+}
+
+.line-tp {
+    height: 0.2vh;
+    /* Height of each line */
+    background: pink;
+    /* Color of the lines */
+    margin: 0;
+}
+
+#reaction-base-container {
     position: absolute;
-    margin-left: -15px;
-    z-index: 2;
+    width: 80vw;
+    /* Full width of the parent */
+    height: 17.6vh;
+    /* Full height of the parent */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 0;
 }
 
-.key.black[data-note$="0"] { left: 25px; }
-.key.black[data-note$="1"] { left: 65px; }
-/* Positioning black keys for each octave */
-${Array.from({ length: 7 }, (_, i) => `
-    .key.black[data-note="C#${i+1}"] { left: ${65 + i * 280}px; }
-    .key.black[data-note="D#${i+1}"] { left: ${105 + i * 280}px; }
-    .key.black[data-note="F#${i+1}"] { left: ${185 + i * 280}px; }
-    .key.black[data-note="G#${i+1}"] { left: ${225 + i * 280}px; }
-    .key.black[data-note="A#${i+1}"] { left: ${265 + i * 280}px; }
-`).join('')}
+.reaction-base-type1 {
+    position: relative;
+    width: 8.5%;
+    height: 17.6vh;
+    background: transparent;
+    padding: 0 0 0vh;
+    /*change to bigger num*/
+    z-index: 10;
+    margin-bottom: 1.1vh;
+}
 
-.key span {
+.reaction-base-type2 {
+    position: relative;
+    width: 1%;
+    height: 17.6vh;
+    background: transparent;
+    opacity: 0.25;
+    padding: 0 0 0vh;
+    /*change to bigger num*/
+    z-index: 10;
+    margin-bottom: 1.1vh;
+}
+
+.reaction-base-type2:hover {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+#vertical-lines {
+    position: relative;
+    margin-top: 5vh;
+    height: 8.8vh;
+    /* Height of the lines */
+    width: 1.6vh;
+}
+
+#vertical-lines::before {
+    content: '';
+    position: absolute;
+    width: 0.4vh;
+    /* Width of the lines */
+    height: 100%;
+    /* Full height of the container */
+    background-color: black;
+    /* Color of the lines */
+    left: 0;
+}
+
+#vertical-lines::after {
+    content: '';
+    position: absolute;
+    width: 0.8vh;
+    /* Width of the lines */
+    height: 100%;
+    /* Full height of the container */
+    background-color: black;
+    /* Color of the lines */
+    right: 0;
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
     display: none;
+    z-index: 100;
 }
 
-.piano.show-notes .key span {
-    display: inline;
+/*notes*/
+
+.n4,
+.n4d,
+.n4b,
+.n8,
+.n8d,
+.n8b,
+.n16,
+.n16d,
+.n16b {
+  width: 20px;
+  height: 10px;
+  background-color: #000000;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  position: relative;
+}
+
+.n2,
+.n2d,
+.n2b {
+  width: 20px;
+  height: 10px;
+  border-width: 2px 4px;
+  border-color: #000000;
+  border-style: solid;
+  background-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.n1,
+.n1d,
+.n1b {
+  width: 20px;
+  height: 10px;
+  border-width: 2px 5px;
+  border-style: solid;
+  border-color: #000000;
+  background-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.stick2,
+.stick4,
+.stick8,
+.stick16 {
+  width: 2px;
+  height: 40px;
+  background: black;
+  position: relative;
+}
+
+.stick8::after,
+.stick16::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 10px;
+  border: 4px solid black;
+  border-radius: 0 100% 0 0;
+  border-right-width: 1px;
+  border-left: none;
+  border-bottom: none;
+  top: 0;
+  right: -15;
+}
+
+.stick16::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 10px;
+  border: 4px solid black;
+  border-radius: 0 100% 0 0;
+  border-right-width: 1px;
+  border-left: none;
+  border-bottom: none;
+  top: 10px;
+}
+
+/*pauses*/
+
+
+.pause1 {
+  width: 10px;
+  height: 6px;
+  background: #000000;
+}
+
+.pause2 {
+  width: 10px;
+  height: 6px;
+  background: #000000;
+}
+
+.pause4 {
+  position: relative;
+  width: 6px;
+  height: 10px;
+  border: 4px solid black;
+  border-radius: 0 0 0 70%;
+  border-bottom-width: 1px;
+  border-right: none;
+  border-top: none;
+  transform: rotate(45deg);
+
+}
+
+.pause4::before {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 10px;
+  border: 4px solid black;
+  border-radius: 0 70% 0 0;
+  border-top-width: 1px;
+  border-bottom: none;
+  border-left: none;
+  right: 6px;
+}
+
+
+.pause4::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 8px;
+  border: solid black;
+  border-radius: 100% 0 0 100%;
+  border-width: 2px 4px;
+  border-right: none;
+  top: 10px;
+  right: -5px;
+  box-sizing: border-box;
+}
+
+.pause8,
+.pause16 {
+  width: 2px;
+  height: 20px;
+  background: #000000;
+  transform: rotate(20deg);
+}
+
+.pause8::before,
+.pause16::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid black;
+  border-radius: 0 0 100% 0;
+  border-bottom-width: 3px;
+  border-top: none;
+  border-left: none;
+  left: -6px;
+}
+
+.pause16::before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid black;
+  border-radius: 0 0 100% 0;
+  border-bottom-width: 3px;
+  border-top: none;
+  border-left: none;
+  left: -6px;
+  top: 6px;
+}
+
+.n1d::before {
+  content: "\0023";
+  color: #000000;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: x-large;
+  right: 1.5vw;
+  top: -1.5vh;
+}
+
+/*derotates*/
+.n2d::before,
+.n4d::before,
+.n8d::before,
+.n16d::before {
+  content: "\0023";
+  color: #000000;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: x-large;
+  right: 2vw;
+  top: -1.5vh;
+  transform: rotate(20deg);
+}
+
+.n1b::before {
+  content: "\266D";
+  color: #000000;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: xx-large;
+  right: 1.5vw;
+  top: -3.5vh;
+}
+
+.n2b::before,
+.n4b::before,
+.n8b::before,
+.n16b::before {
+  content: "\266D";
+  color: #000000;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: xx-large;
+  right: 1.5vw;
+  top: -3.5vh;
+  transform: rotate(20deg);
 }
