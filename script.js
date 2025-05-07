@@ -138,20 +138,37 @@ document.getElementById("toggleButton").addEventListener("click", toggleMenu);
 toggleLanguage();
 
 
+// Обработчик клика по треку (например, "Лунная соната" или "Чайковский")
 document.querySelectorAll('.track').forEach(track => {
     track.addEventListener('click', () => {
         const audioFile = track.dataset.audio;
+
+        // Загружаем аудиофайл
         fetch(audioFile)
             .then(response => response.arrayBuffer())
             .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
             .then(buffer => {
-                audioBuffer = buffer; // сохраняем как будто загруженный пользователем
-                setupAnalyser(); // подключаем анализатор (если надо)
-                playAudio(note); // например, нота A4, или C4
+                // Сохраняем как основной audioBuffer для клавиш
+                audioBuffer = buffer;
+
+                // Настраиваем анализатор
+                setupAnalyser();
+
+                // Однократное проигрывание короткого фрагмента
+                const previewSource = audioContext.createBufferSource();
+                previewSource.buffer = buffer;
+                previewSource.connect(audioContext.destination);
+                previewSource.start(0); // проиграть с начала
+
+                // Обрезать до 2-3 секунд, если нужно:
+                // previewSource.stop(audioContext.currentTime + 2.5);
             })
-            .catch(error => console.error("Kļūda:", error));
+            .catch(error => {
+                console.error("Ошибка при загрузке мелодии:", error);
+            });
     });
 });
+
 
 
 
