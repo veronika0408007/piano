@@ -138,7 +138,20 @@ document.getElementById("toggleButton").addEventListener("click", toggleMenu);
 toggleLanguage();
 
 
-
+document.querySelectorAll('.track').forEach(track => {
+    track.addEventListener('click', () => {
+        const audioFile = track.dataset.audio;
+        fetch(audioFile)
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+            .then(buffer => {
+                audioBuffer = buffer; // сохраняем как будто загруженный пользователем
+                setupAnalyser(); // подключаем анализатор (если надо)
+                playAudio(note); // например, нота A4, или C4
+            })
+            .catch(error => console.error("Kļūda:", error));
+    });
+});
 
 
 
