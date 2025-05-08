@@ -138,38 +138,41 @@ document.getElementById("toggleButton").addEventListener("click", toggleMenu);
 toggleLanguage();
 
 
-// Обработчик клика по треку (например, "Лунная соната" или "Чайковский")
 document.querySelectorAll('.track').forEach(track => {
     track.addEventListener('click', () => {
-        const audioFile = track.dataset.audio;
+        const audioPath = track.getAttribute('data-audio');
 
-        // Загружаем аудиофайл
-        fetch(audioFile)
-            .then(response => response.arrayBuffer())
+        fetch(audioPath)
+            .then(res => res.arrayBuffer())
             .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-            .then(buffer => {
-                // Сохраняем как основной audioBuffer для клавиш
-                audioBuffer = buffer;
+            .then(decodedBuffer => {
+                audioBuffer = decodedBuffer; // Теперь пианино использует этот звук
 
-                // Настраиваем анализатор
                 setupAnalyser();
 
-                // Однократное проигрывание короткого фрагмента
+                // ▶️ Проигрываем 2 секунды предпрослушки
                 const previewSource = audioContext.createBufferSource();
-                previewSource.buffer = buffer;
-                previewSource.connect(audioContext.destination);
-                previewSource.start(0); // проиграть с начала
+                previewSource.buffer = decodedBuffer;
 
-                // Обрезать до 2-3 секунд, если нужно:
-                // previewSource.stop(audioContext.currentTime + 2.5);
+                const previewGain = audioContext.createGain(); // Чтобы можно было остановить
+                previewSource.connect(previewGain);
+                previewGain.connect(audioContext.destination);
+
+                previewSource.start(0);
+                previewSource.stop(audioContext.currentTime + 2);
+
+                // 👉 Прячем библиотеку
+                const library = document.getElementById("musicLibrary");
+                library.classList.add("slide-away");
+
+                // 👉 Также можно автоматически закрыть меню, если оно открыто:
+                const menu = document.getElementById("menu");
+                menu.style.left = "-25%";
+                menu.style.opacity = "0";
             })
-            .catch(error => {
-                console.error("Ошибка при загрузке мелодии:", error);
-            });
+            .catch(err => console.error("Failed to load audio:", err));
     });
 });
-
-
 
 
 // Note line part
